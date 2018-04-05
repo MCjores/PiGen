@@ -1,0 +1,11 @@
+--- stage2.1.orig/rootfs/etc/lightdm/lightdm.conf
++++ stage2.1/rootfs/etc/lightdm/lightdm.conf
+@@ -119,7 +119,7 @@
+ #session-setup-script=
+ #session-cleanup-script=
+ #autologin-guest=false
+-#autologin-user=
++autologin-user=pi
+ #autologin-user-timeout=0
+ #autologin-in-background=false
+ #autologin-session=

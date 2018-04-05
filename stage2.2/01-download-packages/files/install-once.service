@@ -1,0 +1,11 @@
+[Unit]
+Description=Installs packages on first boot
+Before=display-manager.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/lib/install-once/install_once.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
