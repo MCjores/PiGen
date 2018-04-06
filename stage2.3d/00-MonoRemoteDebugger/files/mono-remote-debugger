@@ -1,0 +1,3 @@
+#!/bin/sh
+
+exec /usr/bin/mono /usr/lib/MonoRemoteDebugger.Server/MonoRemoteDebugger.Server.exe "$@"
