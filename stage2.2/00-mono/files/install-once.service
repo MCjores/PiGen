@@ -1,6 +1,6 @@
 [Unit]
 Description=Installs packages on first boot
-Before=display-manager.service
+Before=display-manager.service plymouth-quit.service
 
 [Service]
 Type=oneshot
@@ -8,4 +8,4 @@ ExecStart=/usr/lib/install-once/install_once.sh
 RemainAfterExit=yes
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=sysinit.target
