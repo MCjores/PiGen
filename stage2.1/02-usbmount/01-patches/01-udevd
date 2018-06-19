@@ -1,0 +1,11 @@
+--- stage2.1.orig/rootfs/lib/systemd/system/systemd-udevd.service
++++ stage2.1/rootfs/lib/systemd/system/systemd-udevd.service
+@@ -24,7 +24,7 @@ ExecStart=/lib/systemd/systemd-udevd
+ KillMode=mixed
+ WatchdogSec=3min
+ TasksMax=infinity
+-MountFlags=slave
++MountFlags=shared
+ MemoryDenyWriteExecute=yes
+ RestrictRealtime=yes
+ RestrictAddressFamilies=AF_UNIX AF_NETLINK AF_INET AF_INET6

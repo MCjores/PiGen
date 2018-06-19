@@ -1,4 +1,8 @@
-#!/bin/sh
+#!/bin/bash -e
+
+on_chroot << EOF
+systemctl enable ssh
+EOF
 
 wget https://github.com/techl/MonoRemoteDebugger/releases/download/v1.3.0/MonoRemoteDebugger.Server.zip
 unzip -d "${ROOTFS_DIR}/usr/lib/MonoRemoteDebugger.Server/" MonoRemoteDebugger.Server.zip
