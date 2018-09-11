@@ -26,9 +26,9 @@ if($ContainerExists) {
         & $DOCKER run --rm --privileged `
 		--volumes-from=$ContainerName --name ${ContainerName}_cont `
 		pi-gen `
-		bash -e -o pipefail -c "dpkg-reconfigure qemu-user-static && cd /pi-gen; ./build.sh; rsync -av work/*/build.log deploy/"
+        bash -e -o pipefail -c "dpkg-reconfigure qemu-user-static && cd /pi-gen; ./build.sh; rsync -av work/*/build.log deploy/"
     }
-    finally {
+    catch{
         Write-Host "echo 'got CTRL+C... please wait 5s"
         & $Docker stop -t 5 ${ContainerName}_cont
     }
@@ -40,8 +40,10 @@ else {
         pi-gen `
         bash -e -o pipefail -c "dpkg-reconfigure qemu-user-static && cd /pi-gen; ./build.sh && rsync -av work/*/build.log deploy/"
     }
-    finally {
+    catch{
         Write-Host "echo 'got CTRL+C... please wait 5s"
+    }
+    finally {
         & $Docker stop -t 5 $ContainerName
     }
 }
