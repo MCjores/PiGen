@@ -1,3 +1,3 @@
 #!/bin/bash -e
 
-echo "HOMEDEV  /home           ext4    defaults,noatime  0       3" >> "${ROOTFS_DIR}/etc/fstab"
+echo "HOMEDEV  /home           btrfs   rw,user,auto,exec,subvol=@home 0       0" >> "${ROOTFS_DIR}/etc/fstab"

@@ -77,12 +77,19 @@ for FEATURE in metadata_csum 64bit; do
 done
 mkdosfs -n boot -F 32 -v "$BOOT_DEV" > /dev/null
 mkfs.ext4 -L rootfs -O "$ROOT_FEATURES" "$ROOT_DEV" > /dev/null
-mkfs.ext4 -L home "$HOME_DEV" > /dev/null
+mkfs.btrfs -L btrfs "$HOME_DEV" > /dev/null
 
 mount -v "$ROOT_DEV" "${ROOTFS_DIR}" -t ext4
+
 mkdir -p "${ROOTFS_DIR}/boot"
 mount -v "$BOOT_DEV" "${ROOTFS_DIR}/boot" -t vfat
+
+mkdir -p "${ROOTFS_DIR}/mnt/btrfs"
+mount -v "$HOME_DEV" "${ROOTFS_DIR}/mnt/btrfs" -t btrfs
+
+btrfs subvolume create "${ROOTFS_DIR}/mnt/btrfs/@home"
+mkdir -p "${ROOTFS_DIR}/mnt/btrfs/snapshots"
 mkdir -p "${ROOTFS_DIR}/home"
-mount -v "$HOME_DEV" "${ROOTFS_DIR}/home" -t ext4
+mount -v -o "subvol=@home" "$HOME_DEV" "${ROOTFS_DIR}/home" -t btrfs
 
 rsync -aHAXx --exclude var/cache/apt/archives "${EXPORT_ROOTFS_DIR}/" "${ROOTFS_DIR}/"
