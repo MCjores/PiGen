@@ -10,11 +10,13 @@ rm -rf "${ROOTFS_DIR}"
 mkdir -p "${ROOTFS_DIR}"
 
 BOOT_SIZE=$(du --apparent-size -s "${EXPORT_ROOTFS_DIR}/boot" --block-size=1 | cut -f 1)
+ROOT_SIZE=$(du --apparent-size -s "${EXPORT_ROOTFS_DIR}" --exclude boot --exclude home --block-size=1 | cut -f 1)
 TOTAL_SIZE=$(du --apparent-size -s "${EXPORT_ROOTFS_DIR}" --exclude var/cache/apt/archives --block-size=1 | cut -f 1)
 
 ROUND_SIZE="$((4 * 1024 * 1024))"
 ROUNDED_ROOT_SECTOR=$(((2 * BOOT_SIZE + ROUND_SIZE) / ROUND_SIZE * ROUND_SIZE / 512 + 8192))
-IMG_SIZE=$(((BOOT_SIZE + TOTAL_SIZE + (800 * 1024 * 1024) + ROUND_SIZE - 1) / ROUND_SIZE * ROUND_SIZE))
+ROUNDED_HOME_SECTOR=$(((2 * BOOT_SIZE + ROOT_SIZE + ROUND_SIZE) / ROUND_SIZE * ROUND_SIZE / 512 + 8192))
+IMG_SIZE=$(((BOOT_SIZE + ROOT_SIZE + TOTAL_SIZE + (800 * 1024 * 1024) + ROUND_SIZE - 1) / ROUND_SIZE * ROUND_SIZE))
 
 truncate -s "${IMG_SIZE}" "${IMG_FILE}"
 fdisk -H 255 -S 63 "${IMG_FILE}" <<EOF
@@ -31,6 +33,13 @@ n
 
 
 ${ROUNDED_ROOT_SECTOR}
++$((ROOT_SIZE * 2 /512))
+
+p
+n
+
+
+${ROUNDED_HOME_SECTOR}
 
 
 p
@@ -48,10 +57,17 @@ ROOT_OFFSET=$(echo "$PARTED_OUT" | grep -e '^ 2'| xargs echo -n \
 ROOT_LENGTH=$(echo "$PARTED_OUT" | grep -e '^ 2'| xargs echo -n \
 | cut -d" " -f 4 | tr -d B)
 
+HOME_OFFSET=$(echo "$PARTED_OUT" | grep -e '^ 3'| xargs echo -n \
+| cut -d" " -f 2 | tr -d B)
+HOME_LENGTH=$(echo "$PARTED_OUT" | grep -e '^ 3'| xargs echo -n \
+| cut -d" " -f 4 | tr -d B)
+
 BOOT_DEV=$(losetup --show -f -o "${BOOT_OFFSET}" --sizelimit "${BOOT_LENGTH}" "${IMG_FILE}")
 ROOT_DEV=$(losetup --show -f -o "${ROOT_OFFSET}" --sizelimit "${ROOT_LENGTH}" "${IMG_FILE}")
+HOME_DEV=$(losetup --show -f -o "${HOME_OFFSET}" --sizelimit "${HOME_LENGTH}" "${IMG_FILE}")
 echo "/boot: offset $BOOT_OFFSET, length $BOOT_LENGTH"
 echo "/:     offset $ROOT_OFFSET, length $ROOT_LENGTH"
+echo "/home: offset $HOME_OFFSET, length $HOME_LENGTH"
 
 ROOT_FEATURES="^huge_file"
 for FEATURE in metadata_csum 64bit; do
@@ -61,9 +77,12 @@ for FEATURE in metadata_csum 64bit; do
 done
 mkdosfs -n boot -F 32 -v "$BOOT_DEV" > /dev/null
 mkfs.ext4 -L rootfs -O "$ROOT_FEATURES" "$ROOT_DEV" > /dev/null
+mkfs.ext4 -L home "$HOME_DEV" > /dev/null
 
 mount -v "$ROOT_DEV" "${ROOTFS_DIR}" -t ext4
 mkdir -p "${ROOTFS_DIR}/boot"
 mount -v "$BOOT_DEV" "${ROOTFS_DIR}/boot" -t vfat
+mkdir -p "${ROOTFS_DIR}/home"
+mount -v "$HOME_DEV" "${ROOTFS_DIR}/home" -t ext4
 
 rsync -aHAXx --exclude var/cache/apt/archives "${EXPORT_ROOTFS_DIR}/" "${ROOTFS_DIR}/"
