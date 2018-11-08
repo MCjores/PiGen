@@ -1,0 +1,10 @@
+- name: Введение
+  href: intro.md
+- name: stage2.1
+  href: ../stage2.1/toc.yml
+- name: stage2.2
+  href: ../stage2.2/toc.yml
+- name: stage2.3d
+  href: ../stage2.3d/toc.yml
+- name: stage3_Chistotel
+  href: ../stage3_Chistotel/toc.yml

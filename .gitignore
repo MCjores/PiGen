@@ -7,3 +7,11 @@ SKIP_IMAGES
 .pc
 *-pc
 apt-cacher-ng/
+
+#docfx
+/**/DROP/
+/**/TEMP/
+/**/packages/
+/**/bin/
+/**/obj/
+_site
