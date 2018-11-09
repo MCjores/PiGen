@@ -12,6 +12,10 @@ sed -i -z "s/\n/ noswap ro\n/" "${ROOTFS_DIR}/boot/cmdline.txt"
 mv "${ROOTFS_DIR}/etc/resolv.conf" "${ROOTFS_DIR}/tmp/dhcpcd.resolv.conf"
 ln -s "${ROOTFS_DIR}/tmp/dhcpcd.resolv.conf" "${ROOTFS_DIR}/etc/resolv.conf"
 
+# Размещение файла настройки аппаратных часов
+touch "${ROOTFS_DIR}/tmp/adjtime"
+ln -s "${ROOTFS_DIR}/tmp/adjtime" "${ROOTFS_DIR}/etc/adjtime"
+
 # Перемещение зерна для генератора псевдослучайных чисел
 rm "${ROOTFS_DIR}/var/lib/systemd/random-seed" && \
   ln -s "${ROOTFS_DIR}/tmp/random-seed" "${ROOTFS_DIR}/var/lib/systemd/random-seed"
