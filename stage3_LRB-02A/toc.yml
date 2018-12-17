@@ -1,3 +1,5 @@
+- name: 00-hardware
+  href: 00-hardware/doc.md
 - name: 01-display
   href: 01-display/doc.md
 - name: 02-wallpaper
