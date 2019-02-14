@@ -1,6 +1,9 @@
 #!/bin/bash -e
 
-echo "dtoverlay=i2c-rtc,ds3231" >> "${ROOTFS_DIR}/boot/config.txt"
+cat << EOF >> "${ROOTFS_DIR}/boot/config.txt"
+dtoverlay=i2c-rtc,ds3231
+enable_uart=1
+EOF
 
 on_chroot << EOF
 apt-get -y remove fake-hwclock
