@@ -4,7 +4,7 @@ IMG_FILE="${STAGE_WORK_DIR}/${IMG_FILENAME}${IMG_SUFFIX}.img"
 INFO_FILE="${STAGE_WORK_DIR}/${IMG_FILENAME}${IMG_SUFFIX}.info"
 
 on_chroot << EOF
-/etc/init.d/fake-hwclock stop
+#/etc/init.d/fake-hwclock stop
 hardlink -t /usr/share/doc
 EOF
 
