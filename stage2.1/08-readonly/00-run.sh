@@ -30,7 +30,9 @@ sed -i "/ext4/ s/defaults/defaults,ro/g" "${ROOTFS_DIR}/etc/fstab"
 echo "
 tmpfs    /tmp             tmpfs   nosuid,nodev                  0       0
 tmpfs    /var/log         tmpfs   nosuid,nodev                  0       0
+tmpfs    /var/log/apache2 tmpfs   nosuid,nodev                  0       0
 tmpfs    /var/tmp         tmpfs   nosuid,nodev                  0       0
+tmpfs    /var/lib/misc    tmpfs   nosuid,nodev                  0       0
 tmpfs    /var/lib/dhcpcd5 tmpfs   nosuid,nodev                  0       0
 tmpfs    /var/lib/sudo/ts tmpfs   nosuid,nodev                  0       0" >> "${ROOTFS_DIR}/etc/fstab"
 
