@@ -24,6 +24,10 @@ install -m 644 files/systemd-random-seed.service "${ROOTFS_DIR}/lib/systemd/syst
 # Создание директории для файлов sudo time stamp
 install -d "${ROOTFS_DIR}/var/lib/sudo/ts"
 
+# Создание директории для настроек звука
+install -v -o 1000 -g 1000 -d "${ROOTFS_DIR}/home/${FIRST_USER_NAME}/.config/alsa"
+ln -s "${ROOTFS_DIR}/home/${FIRST_USER_NAME}/.config/alsa" "${ROOTFS_DIR}/var/lib/alsa"
+
 # Изменение таблицы разделов
 sed -i "/boot/ s/defaults/defaults,ro/g" "${ROOTFS_DIR}/etc/fstab"
 sed -i "/ext4/ s/defaults/defaults,ro/g" "${ROOTFS_DIR}/etc/fstab"
