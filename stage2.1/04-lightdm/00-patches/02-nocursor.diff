@@ -1,9 +1,9 @@
 --- stage2.1.orig/rootfs/etc/lightdm/lightdm.conf
 +++ stage2.1/rootfs/etc/lightdm/lightdm.conf
 @@ -88,7 +88,7 @@
- #pam-service=lightdm
  #pam-autologin-service=lightdm-autologin
  #pam-greeter-service=lightdm-greeter
+ #xserver-backend=
 -#xserver-command=X
 +xserver-command=X -nocursor -s 0 dpms
  #xmir-command=Xmir

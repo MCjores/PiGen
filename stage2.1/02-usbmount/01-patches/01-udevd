@@ -4,8 +4,8 @@
  KillMode=mixed
  WatchdogSec=3min
  TasksMax=infinity
--MountFlags=slave
-+MountFlags=shared
+-PrivateMounts=yes
++PrivateMounts=no
  MemoryDenyWriteExecute=yes
  RestrictRealtime=yes
  RestrictAddressFamilies=AF_UNIX AF_NETLINK AF_INET AF_INET6

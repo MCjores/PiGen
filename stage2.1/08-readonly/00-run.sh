@@ -42,3 +42,16 @@ tmpfs    /var/lib/sudo/ts tmpfs   nosuid,nodev                  0       0" >> "$
 
 # Добавление команд переключения режимов доступа к файловой системе в bashrc
 cat files/bash.bashrc.addon.sh >> "${ROOTFS_DIR}/etc/bash.bashrc"
+
+# Установка службы первичной настройки
+install -m 755 files/configure-once/configure_once.sh "${ROOTFS_DIR}/usr/lib/"
+install -m 644 files/configure-once/configure-once.service "${ROOTFS_DIR}/etc/systemd/system/"
+
+# Установка службы выхода из первичной настройки
+install -m 755 files/reboot-once/reboot_once.sh "${ROOTFS_DIR}/usr/lib/"
+install -m 644 files/reboot-once/reboot-once.service "${ROOTFS_DIR}/etc/systemd/system/"
+
+on_chroot << EOF
+systemctl enable configure-once
+systemctl enable reboot-once
+EOF

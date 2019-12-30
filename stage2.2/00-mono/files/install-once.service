@@ -1,6 +1,7 @@
 [Unit]
 Description=Installs packages on first boot
-Before=display-manager.service plymouth-quit.service
+After=configure-once.service
+Before=reboot-once.service
 
 [Service]
 Type=oneshot

@@ -1,0 +1,11 @@
+[Unit]
+Description=Reboots system on first boot after initialization is done
+Before=display-manager.service plymouth-quit.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/lib/reboot_once.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
