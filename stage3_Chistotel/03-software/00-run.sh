@@ -2,4 +2,4 @@
 
 install -v -o 1000 -g 1000 files/* "${ROOTFS_DIR}/usr/lib/install-once/packages/"
 
-echo "while true; do celandine; sleep 1; done" >> "${ROOTFS_DIR}/home/pi/.config/openbox/autostart"
+echo "while true; do celandine /FullScreen; sleep 1; done" >> "${ROOTFS_DIR}/home/pi/.config/openbox/autostart"
