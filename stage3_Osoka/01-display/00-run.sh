@@ -8,6 +8,7 @@ hdmi_mode=87
 hdmi_cvt 1280 800 60 6 0 0 0
 hdmi_drive=1
 dtoverlay=vc4-fkms-v3d
-display_rotate=3
 
 EOF
+
+echo "xrandr -o left" >> "${ROOTFS_DIR}/home/pi/.config/openbox/autostart"
