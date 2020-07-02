@@ -2,7 +2,7 @@
 
 sed -i -z "s/\n/ usbhid.mousepoll=0\n/" "${ROOTFS_DIR}/boot/cmdline.txt"
 sed -i "s/console=serial0,[0-9]* //" "${ROOTFS_DIR}/boot/cmdline.txt"
-install -m 644 files/asound.conf "${ROOTFS_DIR}/etc/"
+#install -m 644 files/asound.conf "${ROOTFS_DIR}/etc/"
 install -m 644 files/99-hidraw.rules "${ROOTFS_DIR}/etc/udev/rules.d/"
 
 cat << EOF >> "${ROOTFS_DIR}/boot/config.txt"
