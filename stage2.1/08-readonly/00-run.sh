@@ -38,7 +38,8 @@ tmpfs    /var/log/apache2 tmpfs   nosuid,nodev                  0       0
 tmpfs    /var/tmp         tmpfs   nosuid,nodev                  0       0
 tmpfs    /var/lib/misc    tmpfs   nosuid,nodev                  0       0
 tmpfs    /var/lib/dhcpcd5 tmpfs   nosuid,nodev                  0       0
-tmpfs    /var/lib/sudo/ts tmpfs   nosuid,nodev                  0       0" >> "${ROOTFS_DIR}/etc/fstab"
+tmpfs    /var/lib/sudo/ts tmpfs   nosuid,nodev                  0       0
+tmpfs    /var/spool/cups  tmpfs   nosuid,nodev                  0       0" >> "${ROOTFS_DIR}/etc/fstab"
 
 # Добавление команд переключения режимов доступа к файловой системе в bashrc
 cat files/bash.bashrc.addon.sh >> "${ROOTFS_DIR}/etc/bash.bashrc"
