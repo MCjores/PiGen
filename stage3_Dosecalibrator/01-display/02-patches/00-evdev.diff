@@ -1,0 +1,11 @@
+--- stage3_Dosecalibrator.orig/rootfs/usr/share/X11/xorg.conf.d/40-libinput.conf
++++ stage3_Dosecalibrator/rootfs/usr/share/X11/xorg.conf.d/40-libinput.conf
+@@ -41,7 +41,7 @@ Section "InputClass"
+         Identifier "libinput touchscreen catchall"
+         MatchIsTouchscreen "on"
+         MatchDevicePath "/dev/input/event*"
+-        Driver "libinput"
++        Driver "evdev"
+ EndSection
+ 
+ Section "InputClass"

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+mount -o remount,rw /
+xinput_calibrator --output-filename /usr/share/X11/xorg.conf.d/99-calibration.conf
+mount -o remount,ro /
