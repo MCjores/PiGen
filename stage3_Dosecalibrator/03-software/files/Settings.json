@@ -1,0 +1,9 @@
+{
+  "DosecalibratorPortName": "/dev/ttyUSB0",
+  "LabelPrinterName": "QL-800",
+  "ReportPrinterName": null,
+  "AdobeReaserPath": "C:\\Program Files (x86)\\Adobe\\Acrobat Reader DC\\Reader\\AcroRd32.exe",
+  "SensitivityMilliseconds": 2000,
+  "LastNuclide": "Нуклид",
+  "Identification": false
+}
