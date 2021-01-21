@@ -28,6 +28,9 @@ install -d "${ROOTFS_DIR}/var/lib/sudo/ts"
 install -v -o 1000 -g 1000 -d "${ROOTFS_DIR}/home/${FIRST_USER_NAME}/.config/alsa"
 ln -s "/home/${FIRST_USER_NAME}/.config/alsa" "${ROOTFS_DIR}/var/lib/alsa"
 
+# Создание директории для печати
+install -d "${ROOTFS_DIR}/var/spool/cups"
+
 # Изменение таблицы разделов
 sed -i "/boot/ s/defaults/defaults,ro/g" "${ROOTFS_DIR}/etc/fstab"
 sed -i "/ext4/ s/defaults/defaults,ro/g" "${ROOTFS_DIR}/etc/fstab"
