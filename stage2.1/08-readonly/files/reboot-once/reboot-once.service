@@ -1,5 +1,6 @@
 [Unit]
 Description=Reboots system on first boot after initialization is done
+After=regenerate_ssh_host_keys.service
 Before=display-manager.service plymouth-quit.service
 
 [Service]
