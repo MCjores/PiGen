@@ -1,0 +1,6 @@
+IMG_NAME='amplituda'
+APT_PROXY='http://localhost:10450'
+TARGET_HOSTNAME='dosecalibrator'
+ENABLE_SSH=1
+LOCALE_DEFAULT='ru_RU.UTF8'
+STAGE_LIST='stage0 stage1 stage2 stage2.1 stage2.2 stage3_Dosecalibrator'

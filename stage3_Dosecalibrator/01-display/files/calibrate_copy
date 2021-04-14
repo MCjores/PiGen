@@ -1,0 +1,5 @@
+#!/bin/bash
+
+mount -o remount,rw /
+sudo cp ~/99-calibration.conf /usr/share/X11/xorg.conf.d/
+mount -o remount,ro /
