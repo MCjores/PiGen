@@ -11,6 +11,6 @@ on_chroot << EOF
 systemctl enable firstboot.service
 EOF
 
-install -v -D -o 1000 -g 1000 files/00-step.sh "${ROOTFS_DIR}/home/${FIRST_USER_NAME}/configurator/steps/"
+install -v -D -o 1000 -g 1000 files/00-step.sh --target-directory="${ROOTFS_DIR}/home/${FIRST_USER_NAME}/configurator/steps/"
 
 sed -i '1s/^/~\/configurate.sh \& \n/' "${ROOTFS_DIR}/home/${FIRST_USER_NAME}/.config/openbox/autostart"
