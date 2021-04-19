@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-install -m 755          files/calibrate "${ROOTFS_DIR}/usr/sbin/"
+install -o 1000 -g 1000 files/calibrate.sh "${ROOTFS_DIR}/home/${FIRST_USER_NAME}"
 install -o 1000 -g 1000 files/rc.xml    "${ROOTFS_DIR}/home/${FIRST_USER_NAME}/.config/openbox/"
 
 cat << EOF >> "${ROOTFS_DIR}/boot/config.txt"

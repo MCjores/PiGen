@@ -1,0 +1,9 @@
+#!/bin/bash -e
+
+echo "Update mime database"
+sudo update-mime-database /usr/share/mime
+
+sudo mount -o remount,rw /
+sudo mkdir /var/lib/dosecalibrator
+sudo touch /var/lib/dosecalibrator/firstboot
+sudo mount -o remount,ro /

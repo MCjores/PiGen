@@ -1,0 +1,11 @@
+[Unit]
+Description=FirstBootService
+ConditionPathExists=!/var/lib/dosecalibrator/firstboot
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/firstboot
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
