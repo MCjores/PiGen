@@ -13,4 +13,4 @@ systemctl enable firstboot.service
 
 install -v -o 1000 -g 1000 files/01-run.sh "${ROOTFS_DIR}/home/${FIRST_USER_NAME}/configurator/steps/"
 
-sed -i '1s/^/~\/configurate.sh \n/' "${ROOTFS_DIR}/home/pi/.config/openbox/autostart"
+sed -i '1s/^/~\/configurate.sh \n/' "${ROOTFS_DIR}/home/${FIRST_USER_NAME}/.config/openbox/autostart"
