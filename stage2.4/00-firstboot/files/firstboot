@@ -1,0 +1,5 @@
+#!/bin/bash -e
+
+echo "First boot dummy script"
+
+sudo rm /var/lib/amplituda/firstboot
