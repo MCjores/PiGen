@@ -1,0 +1,6 @@
+--- stage3_Чистотел.orig/rootfs/etc/rc.local
++++ stage3_Чистотел/rootfs/etc/rc.local
+
+19a20,21
+> hwclock -s
+> 

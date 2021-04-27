@@ -1,0 +1,11 @@
+--- stage3_Чистотел.orig/rootfs/lib/udev/hwclock-set
++++ stage3_Чистотел/rootfs/lib/udev/hwclock-set
+
+29c29
+<     /sbin/hwclock --rtc=$dev --systz --badyear
+---
+> #    /sbin/hwclock --rtc=$dev --systz --badyear
+32c32
+<     /sbin/hwclock --rtc=$dev --systz
+---
+> #    /sbin/hwclock --rtc=$dev --systz
