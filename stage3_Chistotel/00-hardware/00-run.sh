@@ -10,6 +10,5 @@ sed -i "s/console=serial0,[0-9]* //" "${ROOTFS_DIR}/boot/cmdline.txt"
 on_chroot << EOF
 apt-get -y remove fake-hwclock
 update-rc.d -f fake-hwclock remove
-systemctl disable fake-hwclock
-timedatectl set-ntp false
+apt-get update
 EOF

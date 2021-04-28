@@ -1,6 +1,9 @@
---- stage3_Чистотел.orig/rootfs/etc/rc.local
-+++ stage3_Чистотел/rootfs/etc/rc.local
-
-19a20,21
-> hwclock -s
-> 
+--- stage3_Chistotel/rootfs/etc/rc.local
++++ stage3_Chistotel/rootfs/etc/rc.local
+@@ -17,4 +17,6 @@
+   printf "My IP address is %s\n" "$_IP"
+ fi
+ 
++hwclock -s
++
+ exit 0
