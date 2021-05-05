@@ -1,1 +1,1 @@
-deb http://nas-amplituda:8080/ stable main
+deb http://nas-amplituda.local:8080/ stable main
