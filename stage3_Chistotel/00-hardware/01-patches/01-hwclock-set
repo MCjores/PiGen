@@ -1,11 +1,15 @@
---- stage3_Чистотел.orig/rootfs/lib/udev/hwclock-set
-+++ stage3_Чистотел/rootfs/lib/udev/hwclock-set
-
-29c29
-<     /sbin/hwclock --rtc=$dev --systz --badyear
----
-> #    /sbin/hwclock --rtc=$dev --systz --badyear
-32c32
-<     /sbin/hwclock --rtc=$dev --systz
----
-> #    /sbin/hwclock --rtc=$dev --systz
+--- stage3_Chistotel/rootfs/lib/udev/hwclock-set
++++ stage3_Chistotel/rootfs/lib/udev/hwclock-set
+@@ -26,10 +26,10 @@
+ fi
+ 
+ if [ yes = "$BADYEAR" ] ; then
+-    /sbin/hwclock --rtc=$dev --systz --badyear
++#    /sbin/hwclock --rtc=$dev --systz --badyear
+     /sbin/hwclock --rtc=$dev --hctosys --badyear
+ else
+-    /sbin/hwclock --rtc=$dev --systz
++#    /sbin/hwclock --rtc=$dev --systz
+     /sbin/hwclock --rtc=$dev --hctosys
+ fi
+ 
