@@ -5,7 +5,7 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 rm -f ~/99-calibration.conf
 
 echo "Press Ctrl-Alt-F7 and wait for calibration window..."
-DISPLAY=:0 $DIR/xinput_calibrator --misclick 10 -v --device "Touch Touch Device T1" --output-filename ~/99-calibration.conf
+DISPLAY=:0 $HOME/custom_calibrator/xinput_calibrator --misclick 10 -v --device "Touch Touch Device T1" --output-filename ~/99-calibration.conf
 if [ -e ~/99-calibration.conf ]
 then
     sudo mount -o remount,rw /

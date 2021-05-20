@@ -7,5 +7,5 @@ mkdir -p "${ROOTFS_DIR}/var/lib/amplituda"
 touch "${ROOTFS_DIR}/var/lib/amplituda/firstboot"
 
 on_chroot << EOF
-systemctl enable firstboot.service
+service enable firstboot
 EOF
