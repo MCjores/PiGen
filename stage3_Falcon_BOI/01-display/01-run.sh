@@ -1,6 +1,7 @@
 #!/bin/bash -e
 
-install -m 644 files/99-calibration.conf "${ROOTFS_DIR}/usr/share/X11/xorg.conf.d/99-calibration.conf"
+install -m 755          files/touchscreen "${ROOTFS_DIR}/home/pi/"
+install -v -D -o 1000 -g 1000 -m 755 files/xinput_calibrator --target-directory="${ROOTFS_DIR}/home/${FIRST_USER_NAME}/custom_calibrator/"
 
 cat << EOF >> "${ROOTFS_DIR}/boot/config.txt"
 hdmi_group=2

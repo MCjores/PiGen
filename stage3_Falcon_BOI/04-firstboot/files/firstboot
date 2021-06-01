@@ -3,5 +3,5 @@
 echo "Update mime database"
 sudo mount -o remount,rw /
 sudo update-mime-database /usr/share/mime
-sudo rm /var/lib/dosecalibrator/firstboot
+sudo rm /var/lib/amplituda/firstboot
 sudo mount -o remount,ro /
