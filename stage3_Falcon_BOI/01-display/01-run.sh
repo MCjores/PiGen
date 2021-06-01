@@ -1,24 +1,5 @@
 #!/bin/bash -e
 
-tar xvf files/LCD-show-180817.tar.gz -C "${ROOTFS_DIR}/home/pi"
-
-on_chroot << EOF
-cd /home/pi/LCD-show
-
-cp /usr/share/X11/xorg.conf.d/10-evdev.conf /usr/share/X11/xorg.conf.d/45-evdev.conf
-
-dpkg -i -B ./xinput-calibrator_0.7.5-1_armhf.deb
-
-cd ./rpi-fbcp/build/
-cmake ..
-make
-install fbcp /usr/local/bin/fbcp
-cd ../../
-
-cp ./etc/rc.local /etc/rc.local
-cp ./usr/share/X11/xorg.conf.d/99-fbturbo.conf-HDMI /usr/share/X11/xorg.conf.d/99-fbturbo.conf
-EOF
-
 install -m 644 files/99-calibration.conf "${ROOTFS_DIR}/usr/share/X11/xorg.conf.d/99-calibration.conf"
 
 cat << EOF >> "${ROOTFS_DIR}/boot/config.txt"
