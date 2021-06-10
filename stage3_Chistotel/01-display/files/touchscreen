@@ -11,7 +11,7 @@ then
     sudo mount -o remount,rw /
     sudo cp ~/99-calibration.conf /usr/share/X11/xorg.conf.d/
     sudo mount -o remount,ro /
-    sleep 10
+    sleep 3
     exit 0
 else
     exit 1
