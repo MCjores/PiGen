@@ -1,7 +1,7 @@
 #!/bin/bash -e
 
 on_chroot << EOF
-dpkg -i /home/pi/amplituda-udas03_1.0.0_linux-arm.deb
+dpkg -i /home/pi/amplituda-udas03_1.1.0_linux-arm.deb
 EOF
 
 install -m 755 -C -d          files/UDAS-03 "${ROOTFS_DIR}/home/pi/UDAS03"
