@@ -3,6 +3,7 @@
 install -m 644 files/99-hidraw.rules "${ROOTFS_DIR}/etc/udev/rules.d/99-hidraw.rules"
 
 cat << EOF >> "${ROOTFS_DIR}/boot/config.txt"
+dtoverlay=disable-bt
 dtoverlay=i2c-rtc,ds3231
 enable_uart=1
 EOF
