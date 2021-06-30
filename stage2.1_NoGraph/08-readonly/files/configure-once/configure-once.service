@@ -1,0 +1,11 @@
+[Unit]
+Description=Allows configuration on first boot
+Before=regenerate_ssh_host_keys.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/lib/configure_once.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=sysinit.target

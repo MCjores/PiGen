@@ -1,0 +1,5 @@
+IMG_NAME='Amplituda'
+APT_PROXY='http://localhost:10045'
+TARGET_HOSTNAME='synthesis'
+ENABLE_SSH=1
+STAGE_LIST='stage0 stage1 stage2 stage2.1_NoGraph stage2.2 stage3_Synthesis'

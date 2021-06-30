@@ -1,0 +1,15 @@
+--- stage3_Synthesis.orig/rootfs/lib/udev/hwclock-set
++++ stage3_Synthesis/rootfs/lib/udev/hwclock-set
+@@ -4,9 +4,9 @@
+ 
+ dev=$1
+ 
+-if [ -e /run/systemd/system ] ; then
+-    exit 0
+-fi
++#if [ -e /run/systemd/system ] ; then
++#    exit 0
++#fi
+ 
+ if [ -e /run/udev/hwclock-set ]; then
+     exit 0

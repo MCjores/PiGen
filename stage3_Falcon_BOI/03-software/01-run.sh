@@ -1,5 +1,9 @@
 #!/bin/bash -e
 
-install -v -o 1000 -g 1000 files/* "${ROOTFS_DIR}/usr/lib/install-once/packages/"
+install -m 755 -C          files/* "${ROOTFS_DIR}/home/pi/"
 
-echo "while true; do /usr/lib/amplituda-falcon-boi/Amplituda.Falcon.BOI /FullScreen; sleep 1; done" >> "${ROOTFS_DIR}/home/pi/.config/openbox/autostart"
+on_chroot << EOF
+dpkg -i /home/pi/amplituda-falconboi_1.2.2_linux-arm.deb
+EOF
+
+echo "while true; do ( cd /usr/lib/amplituda-falconboi/linux-arm &&  ./Amplituda.Falcon.BOI /FullScreen; sleep 1; ) done" >> "${ROOTFS_DIR}/home/pi/.config/openbox/autostart"

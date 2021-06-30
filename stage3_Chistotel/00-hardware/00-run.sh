@@ -8,8 +8,7 @@ EOF
 sed -i "s/console=serial0,[0-9]* //" "${ROOTFS_DIR}/boot/cmdline.txt"
 
 on_chroot << EOF
-su pi
-. <(dbus-launch --sh-syntax)
-timedatectl set-ntp false
-kill "\$DBUS_SESSION_BUS_PID"
+apt-get -y remove fake-hwclock
+update-rc.d -f fake-hwclock remove
+apt-get update
 EOF

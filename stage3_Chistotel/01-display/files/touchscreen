@@ -1,0 +1,18 @@
+#!/bin/bash
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+
+rm -f ~/99-calibration.conf
+
+echo "Press Ctrl-Alt-F7 and wait for calibration window..."
+DISPLAY=:0 $HOME/custom_calibrator/xinput_calibrator --misclick 10 -v --device "Touch Touch Device T1" --output-filename ~/99-calibration.conf
+if [ -e ~/99-calibration.conf ]
+then
+    sudo mount -o remount,rw /
+    sudo cp ~/99-calibration.conf /usr/share/X11/xorg.conf.d/
+    sudo mount -o remount,ro /
+    sleep 3
+    exit 0
+else
+    exit 1
+fi
