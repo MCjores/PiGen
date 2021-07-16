@@ -4,7 +4,9 @@ Description=UDAS03 Service
 
 [Service]
 Type=simple
-ExecStart=/usr/lib/amplituda/udas03/linux-arm/Amplituda.UDAS.Software.UDAS03.Server
+User=pi
+WorkingDirectory=/usr/share/udas03-server
+ExecStart=/usr/share/udas03-server/Amplituda.UDAS.Software.UDAS03.Server
 RemainAfterExit=yes
 Restart=on-failure
 
