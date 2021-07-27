@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-mkdir -p "${ROOTFS_DIR}/home/${FIRST_USER_NAME}/UDAS03/References"
+mkdir -p "${ROOTFS_DIR}/home/${FIRST_USER_NAME}/UDAS-03/References"
 
 install -m 755 -C            files/UDAS-03 "${ROOTFS_DIR}/home/${FIRST_USER_NAME}/UDAS03/UDAS-03"
 install -m 644 -C            files/References/* "${ROOTFS_DIR}/home/${FIRST_USER_NAME}/Amplituda/UDAS-03/References/"

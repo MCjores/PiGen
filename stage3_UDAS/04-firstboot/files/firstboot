@@ -2,6 +2,12 @@
 
 echo "Update mime database"
 sudo mount -o remount,rw /
+
+ln -s udas03.service /etc/systemd/system/udas03.service
+systemctl daemon-reload
+systemctl enable udas03.service
+mysql -e "CREATE USER IF NOT EXISTS 'udas'@'%' IDENTIFIED BY 'Amplituda';GRANT ALL PRIVILEGES ON \`amplituda\_udas\_%\`.* TO 'udas'@'%';"
+
 sudo update-mime-database /usr/share/mime
 sudo rm /var/lib/amplituda/firstboot
 sudo mount -o remount,ro /
