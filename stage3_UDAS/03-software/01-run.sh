@@ -12,5 +12,7 @@ echo "while true; do ( ~/UDAS03/UDAS-03 -F; sleep 1; ) done" >> "${ROOTFS_DIR}/h
 
 mkdir -p "${ROOTFS_DIR}/home/mariadb/mysql"
 install -m 755 -C            files/mariadb/50-server.cnf "${ROOTFS_DIR}/etc/mysql/mariadb.conf.d/50-server.cnf"
+install -m 755 -C            files/mariadb/50-client.cnf "${ROOTFS_DIR}/etc/mysql/mariadb.conf.d/50-client.cnf"
+
 mkdir -p "${ROOTFS_DIR}/etc/systemd/system/mariadb.service.d"
 install -m 755 -C            files/mariadb/dontprotecthome.conf "${ROOTFS_DIR}/etc/systemd/system/mariadb.service.d/dontprotecthome.conf"
