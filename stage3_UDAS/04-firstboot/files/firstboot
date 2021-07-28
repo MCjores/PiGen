@@ -10,6 +10,7 @@ sudo mysql_install_db
 sudo systemctl daemon-reload
 sudo systemctl enable udas03.service
 sudo mysql -e "CREATE USER IF NOT EXISTS 'udas'@'%' IDENTIFIED BY 'Amplituda';GRANT ALL PRIVILEGES ON \`amplituda\_udas\_%\`.* TO 'udas'@'%';"
+sudo mysql -e "CREATE USER IF NOT EXISTS 'udas'@'localhost' IDENTIFIED BY 'Amplituda';"
 
 echo "Update mime database"
 sudo update-mime-database /usr/share/mime
