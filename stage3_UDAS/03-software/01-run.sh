@@ -4,9 +4,13 @@ mkdir -p "${ROOTFS_DIR}/home/${FIRST_USER_NAME}/Amplituda/UDAS-03/References"
 mkdir -p "${ROOTFS_DIR}/home/${FIRST_USER_NAME}/UDAS03"
 
 install -m 755 -C            files/UDAS-03 "${ROOTFS_DIR}/home/${FIRST_USER_NAME}/UDAS03/UDAS-03"
-install -v -m 644 -d         files/References "${ROOTFS_DIR}/home/${FIRST_USER_NAME}/Amplituda/UDAS-03/References"
+cp -r          files/References/* "${ROOTFS_DIR}/home/${FIRST_USER_NAME}/Amplituda/UDAS-03/References/"
+chmod -R 644 "${ROOTFS_DIR}/home/${FIRST_USER_NAME}/Amplituda/UDAS-03/References"
 install -m 644 -C            files/*.json -t "${ROOTFS_DIR}/home/${FIRST_USER_NAME}/Amplituda/UDAS-03/"
 install -m 755 -C            files/udas03.service "${ROOTFS_DIR}/etc/systemd/system/udas03.service"
+chown -R 1000:1000 "${ROOTFS_DIR}/home/${FIRST_USER_NAME}/Amplituda/"
+chmod -R 777 "${ROOTFS_DIR}/home/${FIRST_USER_NAME}/Amplituda/"
+chown -R 1000:1000 "${ROOTFS_DIR}/home/${FIRST_USER_NAME}/UDAS03/"
 
 echo "while true; do ( ~/UDAS03/UDAS-03 -F; sleep 1; ) done" >> "${ROOTFS_DIR}/home/pi/.config/openbox/autostart"
 
