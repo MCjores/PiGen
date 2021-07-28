@@ -20,3 +20,9 @@ install -m 755 -C            files/mariadb/50-client.cnf "${ROOTFS_DIR}/etc/mysq
 
 mkdir -p "${ROOTFS_DIR}/etc/systemd/system/mariadb.service.d"
 install -m 755 -C            files/mariadb/dontprotecthome.conf "${ROOTFS_DIR}/etc/systemd/system/mariadb.service.d/dontprotecthome.conf"
+
+
+cat << EOF >> "${ROOTFS_DIR}/boot/config.txt"
+framebuffer_width=832
+framebuffer_height=480
+EOF
