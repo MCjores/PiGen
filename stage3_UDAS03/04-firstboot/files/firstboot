@@ -1,0 +1,18 @@
+#!/bin/bash -e
+
+sudo mount -o remount,rw /
+
+sudo chown -R mysql:mysql /home/mariadb
+sudo chmod -R 777 /home/mariadb
+
+sudo mysql_install_db
+
+sudo systemctl daemon-reload
+sudo systemctl enable udas03.service
+sudo mysql -e "CREATE USER IF NOT EXISTS 'udas'@'%' IDENTIFIED BY 'Amplituda';GRANT ALL PRIVILEGES ON \`amplituda\_udas\_%\`.* TO 'udas'@'%';"
+sudo mysql -e "CREATE USER IF NOT EXISTS 'udas'@'localhost' IDENTIFIED BY 'Amplituda';"
+
+echo "Update mime database"
+sudo update-mime-database /usr/share/mime
+sudo rm /var/lib/amplituda/firstboot
+sudo mount -o remount,ro /

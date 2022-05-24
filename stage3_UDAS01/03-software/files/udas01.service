@@ -1,0 +1,14 @@
+
+[Unit]
+Description=UDAS01 Service
+
+[Service]
+Type=simple
+User=pi
+WorkingDirectory=/usr/bin/amplituda-udas01
+ExecStart=/usr/bin/amplituda-udas01/Amplituda.UDAS.Software.UDAS01.Server
+RemainAfterExit=yes
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
