@@ -3,7 +3,7 @@
 mkdir -p "${ROOTFS_DIR}/home/${FIRST_USER_NAME}/Amplituda/UDAS-01/"
 
 install -m 644 -C            files/*.json -t "${ROOTFS_DIR}/home/${FIRST_USER_NAME}/Amplituda/UDAS-01/"
-install -m 755 -C            files/udas03.service "${ROOTFS_DIR}/etc/systemd/system/udas01.service"
+install -m 755 -C            files/udas01.service "${ROOTFS_DIR}/etc/systemd/system/udas01.service"
 chown -R 1000:1000 "${ROOTFS_DIR}/home/${FIRST_USER_NAME}/Amplituda/"
 chmod -R 777 "${ROOTFS_DIR}/home/${FIRST_USER_NAME}/Amplituda/"
 
