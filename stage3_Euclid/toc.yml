@@ -1,0 +1,4 @@
+- name: 00-hardware
+  href: 00-hardware/doc.md
+- name: 01-firstboot
+  href: 01-firstboot/doc.md

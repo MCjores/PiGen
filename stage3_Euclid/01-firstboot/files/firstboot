@@ -1,0 +1,9 @@
+#!/bin/bash -e
+
+sudo mount -o remount,rw /
+
+echo "Update mime database"
+sudo update-mime-database /usr/share/mime
+sudo rm /var/lib/amplituda/firstboot
+
+sudo mount -o remount,ro /
