@@ -1,0 +1,14 @@
+
+[Unit]
+Description=Euclid Grpc Service
+
+[Service]
+Type=simple
+User=pi
+WorkingDirectory=/usr/lib/amplituda-euclid-grpcserver
+ExecStart=/usr/lib/amplituda-euclid-grpcserver/Amplituda.Euclid.Software.GrpcServer
+RemainAfterExit=yes
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
