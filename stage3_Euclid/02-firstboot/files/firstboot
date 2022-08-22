@@ -2,6 +2,9 @@
 
 sudo mount -o remount,rw /
 
+sudo systemctl daemon-reload
+sudo systemctl enable euclid.service
+
 echo "Update mime database"
 sudo update-mime-database /usr/share/mime
 sudo rm /var/lib/amplituda/firstboot
