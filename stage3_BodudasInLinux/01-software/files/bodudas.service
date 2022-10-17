@@ -1,0 +1,11 @@
+[Unit]
+Description=Bodudas
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/Amplituda/bodudas/Amplituda.Liana.Software.BodUdas.Server
+RemainAfterExit=yes
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
