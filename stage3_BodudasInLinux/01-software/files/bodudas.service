@@ -3,9 +3,13 @@ Description=Bodudas
 
 [Service]
 Type=simple
+User=pi
+WorkingDirectory=/usr/bin/Amplituda/bodudas
 ExecStart=/usr/bin/Amplituda/bodudas/Amplituda.Liana.Software.BodUdas.Server
 RemainAfterExit=yes
+RestartSec=2
 Restart=on-failure
+
 
 [Install]
 WantedBy=multi-user.target
