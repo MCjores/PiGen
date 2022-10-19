@@ -1,0 +1,4 @@
+#!/bin/bash -e
+
+echo "Mount the system in 'read-only' mode...
+sudo mount -o remount,ro /
