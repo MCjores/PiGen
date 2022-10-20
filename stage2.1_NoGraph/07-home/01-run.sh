@@ -1,5 +1,5 @@
 #!/bin/bash -e
-
+install -m 755 -v -o 1000 -g 1000 -d "${ROOTFS_DIR}/home/pi/.config"
 install -m 755 files/resize_home_once "${ROOTFS_DIR}/etc/init.d/"
 install -m 755 files/home_resize.sh   "${ROOTFS_DIR}/usr/lib/"
 
@@ -10,5 +10,3 @@ EOF
 
 echo "HOMEDEV  /home           btrfs   rw,user,auto,exec,subvol=@home 0       0" >> "${ROOTFS_DIR}/etc/fstab"
 sed -i 's;/usr/lib/raspi-config/init_resize.sh;/usr/lib/home_resize.sh;' "${ROOTFS_DIR}/boot/cmdline.txt"
-
-chown -R 1000:1000 "${ROOTFS_DIR}/home/${FIRST_USER_NAME}/.config"
