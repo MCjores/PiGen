@@ -1,0 +1,13 @@
+[Unit]
+Description=UDAS03 Service
+
+[Service]
+Type=simple
+User=pi
+WorkingDirectory=/usr/lib/amplituda/udas03/linux-arm
+ExecStart=/usr/lib/amplituda/udas03/linux-arm/Amplituda.UDAS.Software.UDAS03.Server
+RemainAfterExit=yes
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
