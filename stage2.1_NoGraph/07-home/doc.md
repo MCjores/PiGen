@@ -36,6 +36,14 @@ SD
 HOMEDEV  /home  btrfs  rw,user,auto,exec,subvol=@home  0  0
 ```
 
+## Доступ ползователю к папке конфигов (localAppData)
+В linux, Environment.SpecialFolder.LocalApplicationData = /home/{user}/.config
+Если не дать пользователю разрешение на папку, то 
+Environment.SpecialFolder.LocalApplicationData == ""
+```
+chown -R 1000:1000 "${ROOTFS_DIR}/home/${FIRST_USER_NAME}/.config"
+```
+
 ## Разметка свободного пространства при первом включении
 Поскольку образ ОС расчитан на минимальный размер SD-карты, то при
 установке на носитель превосходящий этот размер образуется неразмеченное

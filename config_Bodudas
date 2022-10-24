@@ -1,0 +1,8 @@
+IMG_NAME='Amplituda'
+#APT_PROXY='http://localhost:53128'
+TARGET_HOSTNAME='bodudas'
+ENABLE_SSH=1
+LOCALE_DEFAULT='ru_RU.UTF-8'
+TIMEZONE_DEFAULT='Europe/Moscow'
+DEPLOY_ZIP=1
+STAGE_LIST='stage0 stage1 stage2 stage2.1_NoGraph stage3_BodudasInLinux'

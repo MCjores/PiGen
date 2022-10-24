@@ -1,5 +1,5 @@
 #!/bin/bash -e
-
+install -m 755 -v -o 1000 -g 1000 -d "${ROOTFS_DIR}/home/pi/.config"
 install -m 755 files/resize_home_once "${ROOTFS_DIR}/etc/init.d/"
 install -m 755 files/home_resize.sh   "${ROOTFS_DIR}/usr/lib/"
 
