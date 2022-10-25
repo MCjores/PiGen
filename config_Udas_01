@@ -1,6 +1,6 @@
 IMG_NAME='Amplituda'
 #APT_PROXY='http://localhost:53128'
-TARGET_HOSTNAME='bodudas'
+TARGET_HOSTNAME='udas01'
 ENABLE_SSH=1
 LOCALE_DEFAULT='ru_RU.UTF-8'
 TIMEZONE_DEFAULT='Europe/Moscow'
